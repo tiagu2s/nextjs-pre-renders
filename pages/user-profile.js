@@ -3,7 +3,7 @@ function UserProfilePage(props) {
 }
 
 export default UserProfilePage;
-
+// RUN ON THE SERVER SUDE NOT IN BUILDING PROCESS
 export async function getServerSideProps(context) {
   //res and req default nodeJS objects
   const { params, req, res } = context;

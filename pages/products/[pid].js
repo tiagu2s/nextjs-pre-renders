@@ -45,6 +45,8 @@ export async function getStaticProps(context) {
 }
 {
 }
+
+// PRE RENDERS ALL PATHS THAT WE TELL NEXT JS TO DO
 export async function getStaticPaths() {
   const data = await getData();
 
