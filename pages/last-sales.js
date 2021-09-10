@@ -10,19 +10,21 @@ function LastSalesPage(props) {
   );
 
   useEffect(() => {
-    const transformedSalesToArray = [];
-    //   transform data from firebase to an array
-    for (const key in data) {
-      transformedSalesToArray.push({
-        id: key,
-        username: data[key].username,
-        volume: data[key].volume,
-      });
+    if (data) {
+      const transformedSalesToArray = [];
+      //   transform data from firebase to an array
+      for (const key in data) {
+        transformedSalesToArray.push({
+          id: key,
+          username: data[key].username,
+          volume: data[key].volume,
+        });
+      }
+      console.log("ww", transformedSalesToArray);
+      setSales(transformedSalesToArray);
     }
-
-    setSales(transformedSalesToArray);
   }, [data]);
-  // //  
+  // //
   //   useEffect(() => {
   //     setIsLoading(true);
   //     fetch(
@@ -73,7 +75,7 @@ function LastSalesPage(props) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   const response = await fetch(
     "https://next-js-course-fetching-default-rtdb.firebaseio.com/sales.json"
   );
@@ -90,8 +92,7 @@ export async function getServerSideProps(context) {
   }
   return {
     props: {
-      sales: { sales: transformedSalesToArray },
-      revalidate: 10,
+      sales: transformedSalesToArray,
     },
   };
 }
