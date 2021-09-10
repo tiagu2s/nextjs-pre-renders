@@ -8,14 +8,14 @@ const HomePage = (props) => {
 
   return (
     <>
-      <Link href={`/3`}>
-        <h1>teste </h1>
+      <Link href={`/products/p3`}>
+        <h1>p3 </h1>
       </Link>
       <ul>
         {products.map((product) => {
           <li key={product.id}>
             {" "}
-            <Link href={`/${product.id}`}>{product.title}</Link>
+            <Link href={`/products/${product.id}`}>{product.title}</Link>
           </li>;
         })}
       </ul>
@@ -24,7 +24,7 @@ const HomePage = (props) => {
 };
 
 export async function getStaticProps() {
-  console.log("Regenrating...");
+  console.log("Regenerating...");
   const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
 
   const jsonData = await fs.readFile(filePath);
